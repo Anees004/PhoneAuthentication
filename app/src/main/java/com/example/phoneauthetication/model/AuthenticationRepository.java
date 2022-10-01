@@ -53,7 +53,6 @@ public class AuthenticationRepository {
     }
 
     public void verifyCode(String enteredCode) {
-        Toast.makeText(application,"Before error",Toast.LENGTH_SHORT).show();
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(recieveCode, enteredCode);
         signInWithCredential(credential);
     }
@@ -62,8 +61,8 @@ public class AuthenticationRepository {
         auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(application,"After error",Toast.LENGTH_SHORT).show();
                 if (task.isSuccessful()) {
+                    Toast.makeText(application, "Signed in successfull", Toast.LENGTH_SHORT).show();
 //                    Intent intent = new Intent(application, MainActivity.class);
 //                   application.startActivity(intent);
                 } else
